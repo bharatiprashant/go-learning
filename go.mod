@@ -13,6 +13,4 @@ require (
 
 require github.com/lib/pq v1.10.9 //
 
-// 322 4 Dec
-
-
+// 337 5 Dec
