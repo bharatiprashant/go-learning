@@ -34,6 +34,8 @@ type password struct {
 	hash      []byte
 }
 
+var AnonymosUser = &User{}
+
 func (p *password) Set(plaintext string) error {
 	hash, err := bcrypt.GenerateFromPassword([]byte(plaintext), 12)
 	if err != nil {
@@ -199,4 +201,8 @@ func (m UserModel) GetForToken(tokenScope, tokenPlaintext string) (*User, error)
 	}
 
 	return &user, nil
+}
+
+func (u *User) IsAnonymous() bool {
+	return u == AnonymosUser
 }
